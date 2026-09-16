@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://c55tmt1ba2j1q"]
+
+[ext_resource type="Script" uid="uid://djtpq7cbwe134" path="res://scripts/projectiles/fireball.gd" id="1_script"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1"]
+radius = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fire"]
+shading_mode = 0
+albedo_color = Color(1, 0.45, 0.1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_fire"]
+material = SubResource("StandardMaterial3D_fire")
+radius = 0.25
+height = 0.5
+radial_segments = 12
+rings = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nx3os"]
+albedo_color = Color(0.91086936, 0.44256902, 5.7756904e-07, 1)
+emission_enabled = true
+emission = Color(1, 0.7650113, 0.6157843, 1)
+
+[sub_resource type="Curve" id="Curve_t07v1"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 95.505615), 269.23483, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nx3os"]
+curve = SubResource("Curve_t07v1")
+
+[sub_resource type="Curve" id="Curve_s73vv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.12550347, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qphfj"]
+curve = SubResource("Curve_s73vv")
+
+[sub_resource type="Curve" id="Curve_nx3os"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.7433856, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_t07v1"]
+curve = SubResource("Curve_nx3os")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w2xoc"]
+spread = 21.706
+radial_velocity_min = 2.9999776
+radial_velocity_max = 5.9999776
+radial_velocity_curve = SubResource("CurveTexture_qphfj")
+gravity = Vector3(0, 0.1, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = -2.2351742e-06
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = -2.2351742e-06
+damping_curve = SubResource("CurveTexture_nx3os")
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_t07v1")
+
+[sub_resource type="SphereMesh" id="SphereMesh_nx3os"]
+radius = 0.025
+height = 0.05
+radial_segments = 5
+rings = 5
+
+[node name="Fireball" type="CharacterBody3D" unique_id=785365876]
+collision_layer = 0
+script = ExtResource("1_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=557974314]
+shape = SubResource("SphereShape3D_1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=507487817]
+mesh = SubResource("SphereMesh_fire")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1669421283]
+light_color = Color(1, 0.5, 0.1, 1)
+light_energy = 1.5
+omni_range = 4.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=426635886]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0039996207, 0, 0)
+material_override = SubResource("StandardMaterial3D_nx3os")
+amount = 6
+lifetime = 0.6
+randomness = 1.0
+collision_base_size = 0.1
+process_material = SubResource("ParticleProcessMaterial_w2xoc")
+draw_pass_1 = SubResource("SphereMesh_nx3os")

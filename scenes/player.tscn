@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://cecqvle7qlvvb"]
+
+[ext_resource type="Script" uid="uid://b52skpsgk5ndm" path="res://scripts/player.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://d0v5indi01e12" path="res://models/characters/nico.glb" id="2_g2els"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1"]
+radius = 0.3408203
+height = 1.4112549
+
+[sub_resource type="Curve" id="Curve_g2els"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 644.2736, 0, 0, Vector2(1, 1), 566.3774, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dqkch"]
+curve = SubResource("Curve_g2els")
+
+[sub_resource type="Curve" id="Curve_particles"]
+_data = [Vector2(0, 0.4), 0.0, 2.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_particles"]
+curve = SubResource("Curve_particles")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_run"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 1, 0)
+spread = 35.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.2
+gravity = Vector3(0, 0.5, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 0.29999775
+radial_accel_curve = SubResource("CurveTexture_dqkch")
+scale_min = 0.8
+scale_max = 1.3
+scale_curve = SubResource("CurveTexture_particles")
+color = Color(0.92, 0.93, 0.96, 0.65)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dust"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.92, 0.93, 0.96, 0.65)
+
+[sub_resource type="SphereMesh" id="SphereMesh_dust"]
+material = SubResource("StandardMaterial3D_dust")
+radius = 0.08
+height = 0.16
+radial_segments = 8
+rings = 4
+
+[node name="Player" type="CharacterBody3D" unique_id=1091243888]
+script = ExtResource("1_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=219308847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7078979, 0)
+shape = SubResource("CapsuleShape3D_1")
+
+[node name="Visuals" type="Node3D" parent="." unique_id=328466242]
+
+[node name="nico" parent="Visuals" unique_id=462412992 instance=ExtResource("2_g2els")]
+transform = Transform3D(1.1203126, 0, 0, 0, 2.3397412, 0, 0, 0, 2.3397412, 0.0040147007, 0.0076553524, -0.015667588)
+
+[node name="FootParticles" type="GPUParticles3D" parent="." unique_id=602295720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 0)
+amount = 28
+lifetime = 0.35
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_run")
+draw_pass_1 = SubResource("SphereMesh_dust")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1182585621]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=993470972]
+transform = Transform3D(1, 0, 0, 0, 0.891007, 0.45399, 0, -0.45399, 0.891007, 0, 0, 0)
+spring_length = 6.0
+margin = 0.2
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=849043488]
+current = true

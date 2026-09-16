@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/interactives/fire_flower.gd" id="1_script"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1"]
+radius = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stem"]
+shading_mode = 0
+albedo_color = Color(0.18, 0.75, 0.28, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_stem"]
+material = SubResource("StandardMaterial3D_stem")
+top_radius = 0.08
+bottom_radius = 0.08
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_petals"]
+shading_mode = 0
+albedo_color = Color(1, 0.35, 0.1, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_petals"]
+material = SubResource("StandardMaterial3D_petals")
+inner_radius = 0.15
+outer_radius = 0.45
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_center"]
+shading_mode = 0
+albedo_color = Color(1, 0.9, 0.2, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_center"]
+material = SubResource("StandardMaterial3D_center")
+radius = 0.2
+height = 0.4
+
+[node name="FireFlower" type="Area3D"]
+script = ExtResource("1_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_1")
+
+[node name="Visuals" type="Node3D" parent="."]
+
+[node name="Stem" type="MeshInstance3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("CylinderMesh_stem")
+
+[node name="Petals" type="MeshInstance3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.15, 0)
+mesh = SubResource("TorusMesh_petals")
+
+[node name="Center" type="MeshInstance3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+mesh = SubResource("SphereMesh_center")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+light_color = Color(1, 0.55, 0.1, 1)
+light_energy = 1.2
+omni_range = 3.0
