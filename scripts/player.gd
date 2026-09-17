@@ -28,7 +28,7 @@ extends CharacterBody3D
 @export_group("Charge au Sol / Plongeon (ZR)")
 @export var dive_fall_gravity: float = 85.0            # Gravité accélérée en maintenant ZR pendant la chute
 @export var dive_max_fall_speed: float = 500.0          # Vitesse de chute max pendant le plongeon
-@export var break_blocks_speed_threshold: float = 24.0 # Seuil de vitesse requis pour détruire les blocs
+@export var break_blocks_speed_threshold: float = 20.0 # Seuil de vitesse requis pour détruire les blocs
 @export var canBreakBlocks: bool = false               # Devient true quand la vitesse de charge au sol est atteinte
 
 @export_group("Assistance & Game Feel")

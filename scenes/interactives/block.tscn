@@ -8,7 +8,7 @@
 albedo_color = Color(0.44, 0.29333335, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c31xw"]
-size = Vector3(1, 0.07867432, 1)
+size = Vector3(1, 0.5161209, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0phl"]
 albedo_color = Color(0.48, 0.256, 0, 1)
@@ -44,12 +44,22 @@ shape = SubResource("BoxShape3D_w2xoc")
 [node name="BlockShape" type="CSGBox3D" parent="StaticBody3D/CollisionShape3D" unique_id=1773660015]
 material_override = SubResource("StandardMaterial3D_f67k1")
 
-[node name="Area3D" type="Area3D" parent="StaticBody3D" unique_id=1320905465]
+[node name="CollisionsDetector" type="Node3D" parent="StaticBody3D" unique_id=422898323]
+
+[node name="Area3D" type="Area3D" parent="StaticBody3D/CollisionsDetector" unique_id=1320905465]
 collision_layer = 0
 collision_mask = 2
 
-[node name="BreakDetector" type="CollisionShape3D" parent="StaticBody3D/Area3D" unique_id=1554373945]
+[node name="BreakDetector" type="CollisionShape3D" parent="StaticBody3D/CollisionsDetector/Area3D" unique_id=1554373945]
 transform = Transform3D(0.93432933, 0, 0, 0, 0.93432933, 0, 0, 0, 0.93432933, 0, -0.48272318, 0)
+shape = SubResource("BoxShape3D_c31xw")
+
+[node name="Area3D2" type="Area3D" parent="StaticBody3D/CollisionsDetector" unique_id=1643242384]
+collision_layer = 0
+collision_mask = 2
+
+[node name="BreakDetector" type="CollisionShape3D" parent="StaticBody3D/CollisionsDetector/Area3D2" unique_id=1721894857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70831925, 0)
 shape = SubResource("BoxShape3D_c31xw")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=989083887]

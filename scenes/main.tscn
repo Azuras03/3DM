@@ -217,10 +217,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5948663, 63.52126, -0.36025
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5948663, 63.52126, -0.36025953)
 
 [node name="Node3D5" parent="." unique_id=2011957270 instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5948663, 65.521255, -0.36025953)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5948663, 66.521255, -0.36025953)
 
 [node name="Node3D6" parent="." unique_id=1920207971 instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5948663, 67.521255, -0.36025953)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5948663, 69.521255, -0.36025953)
 
 [node name="Node3D3" parent="." unique_id=266600579 instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5948663, 63.52126, -0.36025953)
