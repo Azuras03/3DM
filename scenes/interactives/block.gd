@@ -12,7 +12,6 @@ func _ready() -> void:
 	topCollision.body_entered.connect(explodeTop);
 
 func explodeTop(body: Node3D) -> void:
-	print(body.canBreakBlocks);
 	if body is Player and body.canBreakBlocks:
 		_explode(body)
 		body.velocity.y = 20.0
