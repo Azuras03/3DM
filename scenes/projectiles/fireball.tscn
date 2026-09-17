@@ -64,7 +64,8 @@ radial_segments = 5
 rings = 5
 
 [node name="Fireball" type="CharacterBody3D" unique_id=785365876]
-collision_layer = 0
+collision_layer = 16
+collision_mask = 15
 script = ExtResource("1_script")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=557974314]
@@ -81,6 +82,7 @@ omni_range = 4.0
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=426635886]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0039996207, 0, 0)
 material_override = SubResource("StandardMaterial3D_nx3os")
+emitting = false
 amount = 6
 lifetime = 0.6
 randomness = 1.0

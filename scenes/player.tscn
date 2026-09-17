@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d0v5indi01e12" path="res://models/characters/nico.glb" id="2_g2els"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1"]
-radius = 0.3408203
+radius = 0.37304688
 height = 1.4112549
 
 [sub_resource type="Curve" id="Curve_g2els"]
@@ -51,6 +51,8 @@ radial_segments = 8
 rings = 4
 
 [node name="Player" type="CharacterBody3D" unique_id=1091243888]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_script")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=219308847]

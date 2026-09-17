@@ -2,7 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cecqvle7qlvvb" path="res://scenes/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" uid="uid://d10k8oqr6ls3x" path="res://models/WorldMap.blend" id="2_0wfyh"]
-[ext_resource type="PackedScene" path="res://scenes/interactives/fire_flower.tscn" id="3_flower"]
+[ext_resource type="PackedScene" uid="uid://c6dqm7p2kwnc3" path="res://scenes/interactives/fire_flower.tscn" id="3_flower"]
+[ext_resource type="PackedScene" uid="uid://cekntecef02wh" path="res://scenes/interactives/block.tscn" id="4_jyhfs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
 sky_top_color = Color(0.35, 0.6, 0.95, 1)
@@ -208,3 +209,21 @@ text = "🎮 Commandes Manette (Xbox / Switch)
 
 [node name="WorldMap" parent="." unique_id=1889966404 instance=ExtResource("2_0wfyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.73541, 51.092133, 3.3467827)
+
+[node name="Node3D" parent="." unique_id=1153202636 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5948663, 63.52126, -0.36025953)
+
+[node name="Node3D2" parent="." unique_id=11230125 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5948663, 63.52126, -0.36025953)
+
+[node name="Node3D5" parent="." unique_id=2011957270 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5948663, 65.521255, -0.36025953)
+
+[node name="Node3D6" parent="." unique_id=1920207971 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5948663, 67.521255, -0.36025953)
+
+[node name="Node3D3" parent="." unique_id=266600579 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5948663, 63.52126, -0.36025953)
+
+[node name="Node3D4" parent="." unique_id=1980670208 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4051337, 63.52126, -0.36025953)

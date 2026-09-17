@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cekntecef02wh"]
+
+[ext_resource type="Script" uid="uid://cyhh72kkwab8y" path="res://scenes/interactives/block.gd" id="1_h0phl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w2xoc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f67k1"]
+albedo_color = Color(0.44, 0.29333335, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c31xw"]
+size = Vector3(1, 0.07867432, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0phl"]
+albedo_color = Color(0.48, 0.256, 0, 1)
+
+[sub_resource type="Curve" id="Curve_jcawe"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_h0phl"]
+curve = SubResource("Curve_jcawe")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jcawe"]
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = 9.999977
+scale_curve = SubResource("CurveTexture_h0phl")
+
+[sub_resource type="BoxMesh" id="BoxMesh_afvej"]
+size = Vector3(0.5, 0.1, 0.5)
+
+[node name="Node3D" type="Node3D" unique_id=1153202636]
+script = ExtResource("1_h0phl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2032619185]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=266315612]
+shape = SubResource("BoxShape3D_w2xoc")
+
+[node name="BlockShape" type="CSGBox3D" parent="StaticBody3D/CollisionShape3D" unique_id=1773660015]
+material_override = SubResource("StandardMaterial3D_f67k1")
+
+[node name="Area3D" type="Area3D" parent="StaticBody3D" unique_id=1320905465]
+collision_layer = 0
+collision_mask = 2
+
+[node name="BreakDetector" type="CollisionShape3D" parent="StaticBody3D/Area3D" unique_id=1554373945]
+transform = Transform3D(0.93432933, 0, 0, 0, 0.93432933, 0, 0, 0, 0.93432933, 0, -0.48272318, 0)
+shape = SubResource("BoxShape3D_c31xw")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=989083887]
+material_override = SubResource("StandardMaterial3D_h0phl")
+emitting = false
+amount = 10
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_jcawe")
+draw_pass_1 = SubResource("BoxMesh_afvej")
